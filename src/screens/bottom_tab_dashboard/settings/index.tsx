@@ -6,10 +6,10 @@ import AnimatedLoaderButton from 'components/molecules/animated_loader_button';
 import React from 'react';
 import { View } from 'react-native';
 import { MaterialBottomTabScreenProps } from 'react-native-paper';
-import { DashbordBottomTabBarParamList } from 'types/navigation_types';
+import { BottomTabNavigatorParamList } from 'types/navigation_types';
 
 type SettingsScreenProps = MaterialBottomTabScreenProps<
-	DashbordBottomTabBarParamList,
+	BottomTabNavigatorParamList,
 	'SettingsScreen'
 >;
 

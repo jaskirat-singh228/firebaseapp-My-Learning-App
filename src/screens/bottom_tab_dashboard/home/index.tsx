@@ -13,6 +13,7 @@ import { AppStackParamList, BottomTabNavigatorParamList } from 'types/navigation
 import { AnalyticEvent } from 'utilities/analytic_event';
 import { SCREEN_WIDTH } from 'utilities/constants';
 import { ms, vs } from 'utilities/scale_utils';
+import { createPDF } from 'utilities/utils';
 
 type HomeScreenProps = MaterialBottomTabScreenProps<BottomTabNavigatorParamList, 'HomeScreen'>;
 
@@ -89,6 +90,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 		{ id: 7, title: 'Top Tab Bars' },
 		{ id: 8, title: 'Device Contacts' },
 		{ id: 9, title: 'Device Location' },
+		{ id: 10, title: 'HTML To PDF' },
 	];
 
 	const handleButtonPress = async (button: TButton) => {
@@ -121,13 +123,16 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 				appStackParamList.navigate('AppWelcomeAnimationScreen');
 				return;
 			case 'Top Tab Bars':
-				appStackParamList.navigate('TopTabDashBoardScreen');
+				appStackParamList.navigate('TopTabDashboardScreen');
 				return;
 			case 'Device Contacts':
 				appStackParamList.navigate('ContactScreen');
 				return;
 			case 'Device Location':
 				getLocationPermission();
+				break;
+			case 'HTML To PDF':
+				createPDF();
 				break;
 			default:
 				return '';

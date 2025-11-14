@@ -30,12 +30,10 @@ const KeyBoardControllerScreen: React.FC<KeyBoardControllerScreenProps> = () => 
 	useKeyboardHandler(
 		{
 			onMove: (e) => {
-				'worklet';
 				progress.value = e.progress;
 				height.value = e.height;
 			},
 			onEnd: (e) => {
-				'worklet';
 				progress.value = e.progress;
 				height.value = e.height;
 			},

@@ -34,7 +34,6 @@ export const InstagramStoryProgress = () => {
 	};
 
 	const animateToNext = (index: number) => {
-		'worklet';
 		runOnJS(setCurrentIndex)(index === urlList.length - 1 ? index : index + 1);
 		runOnJS(scrollToPosition)(index === urlList.length - 1 ? index : index + 1);
 	};

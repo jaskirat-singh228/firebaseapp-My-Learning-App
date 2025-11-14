@@ -16,7 +16,9 @@ end
 
 target 'firebaseapp' do
   config = use_native_modules!
-   use_frameworks! :linkage => :static
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
+  use_frameworks! :linkage => :static
   $RNFirebaseAsStaticFramework = true
   $RNFirebaseAnalyticsWithoutAdIdSupport = true
 

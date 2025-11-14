@@ -49,6 +49,13 @@
 	<string>This app requires access to your location at all times.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires access to your location at all times.</string>
+
+	<!-- HTML To PDF Permissions -->
+	<key>UIFileSharingEnabled</key>
+    <true/>
+    <key>LSSupportsOpeningDocumentsInPlace</key>
+    <true/>
+
 	<key>UIAppFonts</key>
 	<array>
 		<string>MaterialDesignIcons.ttf</string>

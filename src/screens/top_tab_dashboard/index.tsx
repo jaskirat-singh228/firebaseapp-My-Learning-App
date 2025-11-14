@@ -3,13 +3,13 @@ import TopTabNavigator from 'navigation/top_tab_navigator';
 import React from 'react';
 import { AppStackParamList } from 'types/navigation_types';
 
-type TopTabDashBoardScreenProps = NativeStackScreenProps<
+type TopTabDashboardScreenProps = NativeStackScreenProps<
 	AppStackParamList,
-	'TopTabDashBoardScreen'
+	'TopTabDashboardScreen'
 >;
 
-const TopTabDashBoardScreen: React.FC<TopTabDashBoardScreenProps> = () => {
+const TopTabDashboardScreen: React.FC<TopTabDashboardScreenProps> = () => {
 	return <TopTabNavigator />;
 };
 
-export default TopTabDashBoardScreen;
+export default TopTabDashboardScreen;

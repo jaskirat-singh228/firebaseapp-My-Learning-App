@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import BottomTabView from 'components/organisms/bottom_tab_bar';
 import React from 'react';
-import HomeScreen from 'screens/bottom_tab_dash_board/home';
-import ProfileScreen from 'screens/bottom_tab_dash_board/profile';
-import SettingsScreen from 'screens/bottom_tab_dash_board/settings';
+import HomeScreen from 'screens/bottom_tab_dashboard/home';
+import ProfileScreen from 'screens/bottom_tab_dashboard/profile';
+import SettingsScreen from 'screens/bottom_tab_dashboard/settings';
 import { BottomTabNavigatorParamList } from 'types/navigation_types';
 
 const Tab = createBottomTabNavigator<BottomTabNavigatorParamList>();

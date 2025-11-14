@@ -4,7 +4,7 @@ import BaseText from 'components/base_components/base_text';
 import FullScreenContainer from 'components/hoc/full_screen_container';
 import { BackWithTitleHeader } from 'components/molecules/back_with_title_view';
 import React from 'react';
-import { TLocationCoords } from 'screens/bottom_tab_dash_board/home';
+import { TLocationCoords } from 'screens/bottom_tab_dashboard/home';
 import { AppStackParamList } from 'types/navigation_types';
 import { showToast } from 'utilities/utils';
 

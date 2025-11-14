@@ -1,6 +1,6 @@
 export type AppStackParamList = {
-	BottomTabDashBoardScreen: undefined;
-	TopTabDashBoardScreen: undefined;
+	BottomTabDashboardScreen: undefined;
+	TopTabDashboardScreen: undefined;
 	TodoScreen: {
 		id?: string;
 	};

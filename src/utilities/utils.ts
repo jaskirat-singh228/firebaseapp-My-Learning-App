@@ -1,10 +1,12 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import { Alert, AlertButton, AlertOptions } from 'react-native';
+import RNFS from 'react-native-fs';
+import { generatePDF } from 'react-native-html-to-pdf';
 import Toast, { ToastType } from 'react-native-toast-message';
 import { userLogin, userLogout } from 'store/slices/login_slice';
 import { TValidateLoginDetailResponse } from 'types/api_response_data_models';
-import { setNotificationData } from './initial_notification_data';
+import { IS_ANDROID, IS_IOS } from './constants';
 
 /**
  * Function to display an alert dialog with a message and an optional title.
@@ -113,5 +115,34 @@ export const logoutUser = async (dispatch: Dispatch): Promise<void> => {
 };
 
 export const notificationData = async (notificationResponse: object): Promise<void> => {
-	setNotificationData(notificationResponse);
+	// setNotificationData(notificationResponse);
+};
+
+export const createPDF = async () => {
+	try {
+		const options = {
+			html: '<h1>Invoice</h1><p>This is a sample PDF document.</p>',
+			fileName: 'HTMLToPDF',
+			base64: true,
+		};
+
+		const file = await generatePDF(options);
+		console.log('Generated (private):', file.filePath);
+
+		const savePath = IS_IOS
+			? `${RNFS.DocumentDirectoryPath}/sample.pdf`
+			: `${RNFS.ExternalStorageDirectoryPath}/Documents/sample.pdf`;
+
+		if (IS_ANDROID) {
+			await RNFS.mkdir(`${RNFS.ExternalStorageDirectoryPath}/Documents`);
+		}
+
+		await RNFS.moveFile(file.filePath, savePath);
+		console.log('PDF saved to:', savePath);
+
+		Alert.alert('PDF Saved', `File saved at:\n${savePath}`);
+	} catch (error: any) {
+		console.error('PDF Error:', error);
+		Alert.alert('Error', error.message || 'Failed to generate or move PDF.');
+	}
 };

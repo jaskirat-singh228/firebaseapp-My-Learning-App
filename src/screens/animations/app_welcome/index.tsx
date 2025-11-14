@@ -54,7 +54,6 @@ const AppWelcomeAnimationScreen: React.FC<AppWelcomeAnimationScreenProps> = (pro
 	};
 
 	const scaleDownFAB = () => {
-		'worklet';
 		fabButtonSize.value = withTiming(100, { duration: 2000 });
 		fabButtonTranslateX.value = withTiming(SCREEN_WIDTH - 130, { duration: 2000 });
 		fabButtonTranslateY.value = withTiming(
@@ -65,7 +64,6 @@ const AppWelcomeAnimationScreen: React.FC<AppWelcomeAnimationScreenProps> = (pro
 	};
 
 	const scaleAndTranslateFABIcon = () => {
-		'worklet';
 		fabButtonTranslateX.value = withTiming(SCREEN_WIDTH * 0.05, { duration: 2000 }, () => {});
 		fabButtonTranslateY.value = withTiming(SCREEN_HEIGHT / 3, { duration: 2000 }, () => {});
 		fabButtonSize.value = withTiming(SCREEN_WIDTH * 0.9, { duration: 2000 }, () => {
@@ -78,14 +76,12 @@ const AppWelcomeAnimationScreen: React.FC<AppWelcomeAnimationScreenProps> = (pro
 	};
 
 	const showFABIcon = () => {
-		'worklet';
 		fabButtonOpacity.value = withTiming(1, { duration: 1000 }, () => {
 			scaleAndTranslateFABIcon();
 		});
 	};
 
 	const hideWelcomeMsg = () => {
-		'worklet';
 		welcomeText.value = withTiming(
 			SCREEN_HEIGHT,
 			{
@@ -98,7 +94,6 @@ const AppWelcomeAnimationScreen: React.FC<AppWelcomeAnimationScreenProps> = (pro
 	};
 
 	const showBalloons = () => {
-		'worklet';
 		balloons.value = withTiming(-SCREEN_HEIGHT, { duration: 2000 }, () => {
 			worldText.value = withTiming(0, { duration: 1000 }, () => {
 				hideWelcomeMsg();
