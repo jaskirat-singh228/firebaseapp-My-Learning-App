@@ -1,8 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-# Add Node.js binaries to PATH (especially for macOS or VS Code GUI commits)
-export PATH="/usr/local/bin:/opt/homebrew/bin:/Users/jaskirat/.nvm/versions/node/v23.11.0/bin:$PATH"
-
-npx lint-staged
-echo "✅ Pre-commit hook executed!"
