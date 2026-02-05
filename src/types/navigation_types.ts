@@ -19,7 +19,9 @@ export type AppStackParamList = {
 			| 'repeat_&_sequence'
 			| 'drag_box'
 			| 'progress_bar'
-			| 'animated_crousal';
+			| 'animated_crousal'
+			| 'cwc_new_mobile_login_banner_screen_list_with_progress_bar'
+			| 'cwc_new_mobile_adds_banner_screen';
 	};
 	ContactScreen: undefined;
 	LocationScreen: undefined;

@@ -7,30 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		068DEB4B04844B55BC1E40E9 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77714EEAE53E489B8A074113 /* Roboto-Bold.ttf */; };
-		0EA09816288943C092C9C0DF /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ADAA7E0E28642538A48A21B /* Roboto-Light.ttf */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		266FEF2280144BED98B360AE /* jsMath-cmmi10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4F4614BDF20F4735998BD38C /* jsMath-cmmi10.ttf */; };
-		3AC276F85B644204BCB6F078 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 47C23E2B7D5B46FEA6666ACD /* Roboto-Thin.ttf */; };
-		783386285B224CBD8FB2A9AD /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0BC7B6AA156E4530ABE5C08B /* Roboto-Regular.ttf */; };
 		7E3BE9732EC61176002211EC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
-		7E6A47572E545FF1008A5FE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7E6A47562E545FF1008A5FE3 /* GoogleService-Info.plist */; };
-		7E8BC9262E53553A0038DDF6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		ABDA12AA10AE4B8086A3D636 /* jsMath-cmbx10.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F773C0BC2F4357835AFAAE /* jsMath-cmbx10.ttf */; };
-		E0C4BC553735425D82A77F81 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 199D04DAF908471C98F819CB /* Roboto-Medium.ttf */; };
+		E2AD470580FD836B90820825 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 52F882429071B3D977BC8F9A /* PrivacyInfo.xcprivacy */; };
 		FDF9ED54C0BF5A867160E1D6 /* Pods_firebaseapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F197E128A0E4B728DE418D50 /* Pods_firebaseapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7EAD99392EC71497003746C3 /* PBXContainerItemProxy */ = {
+		7EC046202EF3EC0B00A6BE4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7EAD99322EC71497003746C3 /* RNFS.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = F12AFB9B1ADAF8F800E0535D;
 			remoteInfo = RNFS;
 		};
-		7EAD993B2EC71497003746C3 /* PBXContainerItemProxy */ = {
+		7EC046222EF3EC0B00A6BE4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7EAD99322EC71497003746C3 /* RNFS.xcodeproj */;
 			proxyType = 2;
@@ -40,23 +30,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BC7B6AA156E4530ABE5C08B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = firebaseapp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = firebaseapp/Info.plist; sourceTree = "<group>"; };
-		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = firebaseapp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		199D04DAF908471C98F819CB /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../src/assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		47C23E2B7D5B46FEA6666ACD /* Roboto-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Thin.ttf"; path = "../src/assets/fonts/Roboto-Thin.ttf"; sourceTree = "<group>"; };
-		4F4614BDF20F4735998BD38C /* jsMath-cmmi10.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "jsMath-cmmi10.ttf"; path = "../src/assets/fonts/jsMath-cmmi10.ttf"; sourceTree = "<group>"; };
-		5ADAA7E0E28642538A48A21B /* Roboto-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Light.ttf"; path = "../src/assets/fonts/Roboto-Light.ttf"; sourceTree = "<group>"; };
+		52F882429071B3D977BC8F9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		63ACEE0E1EFB2295AD4F063E /* Pods-firebaseapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firebaseapp.release.xcconfig"; path = "Target Support Files/Pods-firebaseapp/Pods-firebaseapp.release.xcconfig"; sourceTree = "<group>"; };
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = firebaseapp/AppDelegate.swift; sourceTree = "<group>"; };
-		77714EEAE53E489B8A074113 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Bold.ttf"; path = "../src/assets/fonts/Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		7E6A47562E545FF1008A5FE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7E8BC9252E53549D0038DDF6 /* firebaseapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = firebaseapp.entitlements; path = firebaseapp/firebaseapp.entitlements; sourceTree = "<group>"; };
 		7EAD99312EC71479003746C3 /* firebaseapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firebaseapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EAD99322EC71497003746C3 /* RNFS.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = SOURCE_ROOT; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = firebaseapp/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89F773C0BC2F4357835AFAAE /* jsMath-cmbx10.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "jsMath-cmbx10.ttf"; path = "../src/assets/fonts/jsMath-cmbx10.ttf"; sourceTree = "<group>"; };
 		AE2AE0FAB6000AF28F96398C /* Pods-firebaseapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-firebaseapp.debug.xcconfig"; path = "Target Support Files/Pods-firebaseapp/Pods-firebaseapp.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F197E128A0E4B728DE418D50 /* Pods_firebaseapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_firebaseapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,19 +53,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* firebaseapp */ = {
-			isa = PBXGroup;
-			children = (
-				7E8BC9252E53549D0038DDF6 /* firebaseapp.entitlements */,
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				761780EC2CA45674006654EE /* AppDelegate.swift */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
-				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
-			);
-			name = firebaseapp;
-			sourceTree = "<group>";
-		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +65,18 @@
 		7EAD99352EC71497003746C3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7EAD993A2EC71497003746C3 /* libRNFS.a */,
-				7EAD993C2EC71497003746C3 /* libRNFS.a */,
+				7EC046212EF3EC0B00A6BE4A /* libRNFS.a */,
+				7EC046232EF3EC0B00A6BE4A /* libRNFS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7EC0461D2EF3EBE600A6BE4A /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				761780EC2CA45674006654EE /* AppDelegate.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -117,12 +91,12 @@
 			isa = PBXGroup;
 			children = (
 				7E6A47562E545FF1008A5FE3 /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* firebaseapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
-				CE2DCCCC68B642BEA3CB9767 /* Resources */,
+				7EC0461D2EF3EBE600A6BE4A /* Recovered References */,
+				52F882429071B3D977BC8F9A /* PrivacyInfo.xcprivacy */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -146,20 +120,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		CE2DCCCC68B642BEA3CB9767 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				77714EEAE53E489B8A074113 /* Roboto-Bold.ttf */,
-				5ADAA7E0E28642538A48A21B /* Roboto-Light.ttf */,
-				199D04DAF908471C98F819CB /* Roboto-Medium.ttf */,
-				0BC7B6AA156E4530ABE5C08B /* Roboto-Regular.ttf */,
-				47C23E2B7D5B46FEA6666ACD /* Roboto-Thin.ttf */,
-				89F773C0BC2F4357835AFAAE /* jsMath-cmbx10.ttf */,
-				4F4614BDF20F4735998BD38C /* jsMath-cmmi10.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -170,12 +130,12 @@
 				3BD93A91D11BB440A8B10E7A /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
-				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				32517436FDCF029933CB6CB2 /* [CP] Embed Pods Frameworks */,
 				A2B6DFBFDB151B163EB5C538 /* [CP] Copy Pods Resources */,
 				E320816D07EF4B013037DDE6 /* [CP-User] [RNFB] Core Configuration */,
 				EA90F4338BD552FE0C2CCF92 /* [CP-User] [RNFB] Crashlytics Configuration */,
+				2646995DB0D01EF100CD793C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -224,38 +184,28 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		7EAD993A2EC71497003746C3 /* libRNFS.a */ = {
+		7EC046212EF3EC0B00A6BE4A /* libRNFS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNFS.a;
-			remoteRef = 7EAD99392EC71497003746C3 /* PBXContainerItemProxy */;
+			remoteRef = 7EC046202EF3EC0B00A6BE4A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7EAD993C2EC71497003746C3 /* libRNFS.a */ = {
+		7EC046232EF3EC0B00A6BE4A /* libRNFS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNFS.a;
-			remoteRef = 7EAD993B2EC71497003746C3 /* PBXContainerItemProxy */;
+			remoteRef = 7EC046222EF3EC0B00A6BE4A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		13B07F8E1A680F5B00A75B9A /* Resources */ = {
+		2646995DB0D01EF100CD793C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E8BC9262E53553A0038DDF6 /* PrivacyInfo.xcprivacy in Resources */,
-				7E6A47572E545FF1008A5FE3 /* GoogleService-Info.plist in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				068DEB4B04844B55BC1E40E9 /* Roboto-Bold.ttf in Resources */,
-				0EA09816288943C092C9C0DF /* Roboto-Light.ttf in Resources */,
-				E0C4BC553735425D82A77F81 /* Roboto-Medium.ttf in Resources */,
-				783386285B224CBD8FB2A9AD /* Roboto-Regular.ttf in Resources */,
-				3AC276F85B644204BCB6F078 /* Roboto-Thin.ttf in Resources */,
-				ABDA12AA10AE4B8086A3D636 /* jsMath-cmbx10.ttf in Resources */,
-				266FEF2280144BED98B360AE /* jsMath-cmmi10.ttf in Resources */,
+				E2AD470580FD836B90820825 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
+			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"$REACT_NATIVE_PATH/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"$REACT_NATIVE_PATH/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"\\\"$WITH_ENVIRONMENT\\\" \\\"$REACT_NATIVE_XCODE\\\"\"\n";
 		};
 		32517436FDCF029933CB6CB2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -814,6 +764,8 @@
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers/platform/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -827,6 +779,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -898,6 +851,8 @@
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-NativeModulesApple/React_NativeModulesApple.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers",
 					"${PODS_CONFIGURATION_BUILD_DIR}/React-graphics/React_graphics.framework/Headers/react/renderer/graphics/platform/ios",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers",
+					"${PODS_CONFIGURATION_BUILD_DIR}/React-runtimeexecutor/React_runtimeexecutor.framework/Headers/platform/ios",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -910,6 +865,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",

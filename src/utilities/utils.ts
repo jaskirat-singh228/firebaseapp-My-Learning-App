@@ -1,12 +1,19 @@
 import { Dispatch } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
-import { Alert, AlertButton, AlertOptions } from 'react-native';
-import RNFS from 'react-native-fs';
-import { generatePDF } from 'react-native-html-to-pdf';
+import {
+	Alert,
+	AlertButton,
+	AlertOptions,
+	PermissionsAndroid,
+	Platform,
+	Share,
+} from 'react-native';
+import { ExternalStorageDirectoryPath, moveFile } from 'react-native-fs';
+import { generatePDF, PDFOptions } from 'react-native-html-to-pdf';
 import Toast, { ToastType } from 'react-native-toast-message';
 import { userLogin, userLogout } from 'store/slices/login_slice';
 import { TValidateLoginDetailResponse } from 'types/api_response_data_models';
-import { IS_ANDROID, IS_IOS } from './constants';
+import { IS_IOS } from './constants';
 
 /**
  * Function to display an alert dialog with a message and an optional title.
@@ -118,31 +125,70 @@ export const notificationData = async (notificationResponse: object): Promise<vo
 	// setNotificationData(notificationResponse);
 };
 
+const requestPermission = async () => {
+	// Android 13+ (NO storage permission needed)
+
+	if (Platform.OS === 'android' && Platform.Version <= 32) {
+		const granted = await PermissionsAndroid.request(
+			PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+			{
+				title: 'Storage Permission Required',
+				message: 'App needs access to your storage to download the PDF',
+				buttonPositive: 'Allow',
+			},
+		);
+		return granted === PermissionsAndroid.RESULTS.GRANTED;
+	}
+
+	return true;
+};
+
 export const createPDF = async () => {
+	const hasPermission = await requestPermission();
+	console.log('Permission ==> ', hasPermission);
+
+	if (!hasPermission) return;
+
+	const options: PDFOptions = {
+		html: '<h1>Invoice</h1><p>This is a sample PDF document.</p>',
+		fileName: 'HTMLToPDF',
+		directory: 'Documents',
+	};
+
 	try {
-		const options = {
-			html: '<h1>Invoice</h1><p>This is a sample PDF document.</p>',
-			fileName: 'HTMLToPDF',
-			base64: true,
-		};
-
 		const file = await generatePDF(options);
-		console.log('Generated (private):', file.filePath);
+		console.log('Invoice Path:', file.filePath);
 
-		const savePath = IS_IOS
-			? `${RNFS.DocumentDirectoryPath}/sample.pdf`
-			: `${RNFS.ExternalStorageDirectoryPath}/Documents/sample.pdf`;
-
-		if (IS_ANDROID) {
-			await RNFS.mkdir(`${RNFS.ExternalStorageDirectoryPath}/Documents`);
+		if (IS_IOS) {
+			Share.share({
+				message: 'Save your invoice PDF in device.',
+				url: `file://${file.filePath}`,
+				title: `HTMLToPDF`,
+			});
+		} else {
+			const savePath = `${ExternalStorageDirectoryPath}/Documents/HTMLToPDF.pdf`;
+			await moveFile(file.filePath, savePath);
+			console.log('PDF saved to:', savePath);
 		}
 
-		await RNFS.moveFile(file.filePath, savePath);
-		console.log('PDF saved to:', savePath);
+		// If any file download in divace
 
-		Alert.alert('PDF Saved', `File saved at:\n${savePath}`);
-	} catch (error: any) {
-		console.error('PDF Error:', error);
-		Alert.alert('Error', error.message || 'Failed to generate or move PDF.');
+		// 	const savePath = IS_IOS
+		//   ? `${RNFS.DocumentDirectoryPath}/Invoice.pdf`
+		//   : `${RNFS.ExternalStorageDirectoryPath}/Documents/Invoice.pdf`;
+
+		// const result = await RNFS.downloadFile({
+		//   fromUrl:
+		//     'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',          // dummy url
+		//   toFile: savePath,
+		// });
+
+		// if (result !== undefined) {
+		//   console.log('File downloaded to:', savePath);
+		//   Alert.alert('File downloaded successfully');
+		// }
+	} catch (err) {
+		showToast('Failed to download invoice!', 'danger');
+		console.error('Invoice generation error:', err);
 	}
 };

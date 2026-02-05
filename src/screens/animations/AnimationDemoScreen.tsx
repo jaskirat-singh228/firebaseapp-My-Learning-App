@@ -2,6 +2,8 @@ import { RouteProp, useRoute } from '@react-navigation/native';
 import AnimatedCrousal from 'components/animations/AnimatedCrousal';
 import { AnimatedRangeBar } from 'components/animations/AnimatedRangeBar';
 import { AnimatedScrollHeader } from 'components/animations/AnimatedScrollHeader';
+import { CWCPCSMobileNewAddsBannerScreen } from 'components/animations/cwc_new_mobile_adds_banner_screen';
+import { CWCPCSMobileNewLoginBannerScreenListWithProgressBar } from 'components/animations/cwc_new_mobile_login_banner_screen_list_with_progress_bar';
 import { DragBox } from 'components/animations/DragBox';
 import { FadeAnimation } from 'components/animations/FadeAnimation';
 import { InstagramStoryProgress } from 'components/animations/InstagramStoryProgress';
@@ -40,6 +42,10 @@ const AnimationDemoScreen: React.FC = () => {
 				return <InstagramStoryProgress />;
 			case 'animated_crousal':
 				return <AnimatedCrousal />;
+			case 'cwc_new_mobile_login_banner_screen_list_with_progress_bar':
+				return <CWCPCSMobileNewLoginBannerScreenListWithProgressBar />;
+			case 'cwc_new_mobile_adds_banner_screen':
+				return <CWCPCSMobileNewAddsBannerScreen />;
 			default:
 				return <BaseText>No animation here!</BaseText>;
 		}

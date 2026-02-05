@@ -3,11 +3,13 @@ import crashlytics from '@react-native-firebase/crashlytics';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AnimatedLoaderButton from 'components/molecules/animated_loader_button';
+import { DropDown, DropDownItem } from 'components/organisms/dropdown';
 import { useDialog } from 'context/app_dialog_provider';
 import { useFirebaseNotifications } from 'hooks/firebase/useFirebaseNotifications';
 import React, { useCallback } from 'react';
-import { Linking, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, Linking, ScrollView, StyleSheet, View } from 'react-native';
 import { MaterialBottomTabScreenProps } from 'react-native-paper';
+import RazorpayCheckout from 'react-native-razorpay';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppStackParamList, BottomTabNavigatorParamList } from 'types/navigation_types';
 import { AnalyticEvent } from 'utilities/analytic_event';
@@ -34,10 +36,19 @@ export type GeolocationResponse = {
 	timestamp: number;
 };
 
-const HomeScreen: React.FC<HomeScreenProps> = () => {
+export const states: DropDownItem[] = [
+	{ id: '1', label: 'Punjab' },
+	{ id: '2', label: 'Haryana' },
+	{ id: '3', label: 'Delhi' },
+	{ id: '4', label: 'Maharashtra' },
+	{ id: '5', label: 'Karnataka' },
+];
+
+const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 	useFirebaseNotifications();
 	const { showDialog, hideDialog } = useDialog();
 	const { top } = useSafeAreaInsets();
+	const [selectedState, setSelectedState] = React.useState<DropDownItem | null>(null);
 	const appStackParamList = useNavigation<NativeStackNavigationProp<AppStackParamList>>();
 
 	React.useEffect(() => {
@@ -48,16 +59,6 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 			},
 		});
 	}, []);
-
-	// React.useEffect(() => {
-	//   , '<<<<<<<<<<before');
-
-	//   function abc() {
-	//     return 'Hello from abc';
-	//   }
-
-	//   , '<<<<<<<<<<after');
-	// }, []);
 
 	const getLocationPermission = useCallback(() => {
 		Geolocation.requestAuthorization(
@@ -91,7 +92,42 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 		{ id: 8, title: 'Device Contacts' },
 		{ id: 9, title: 'Device Location' },
 		{ id: 10, title: 'HTML To PDF' },
+		{ id: 11, title: 'Razorpay' },
+		{ id: 12, title: 'Dropdown View' },
 	];
+
+	const handlePayPress = async () => {
+		try {
+			// Open Razorpay checkout with the created order
+			var options = {
+				description: 'Credits towards consultation',
+				image: 'https://dummyjson.com/icon/emilys/128',
+				currency: 'INR',
+				key: 'rzp_test_S2va5o3zko0xcK',
+				amount: 500, // Amount is already in paise from Razorpay API
+				name: 'Test User',
+				order_id: '1', // Use the order ID from created order
+				prefill: {
+					contact: '+91' + 9876543210 || '',
+					name: 'Test User',
+				},
+				theme: { color: '#53a20e' },
+			};
+			RazorpayCheckout.open(options)
+				.then((data) => {
+					// Alert.alert(`Success: ${data.razorpay_payment_id}`);
+					console.log('data.razorpay_payment_id: ', data.razorpay_payment_id);
+
+					props.navigation.goBack();
+				})
+				.catch((error) => {
+					Alert.alert(`Error: ${error.code} | ${error.description}`);
+				});
+		} catch (error) {
+			console.error('Error creating order:', error);
+			Alert.alert('Error', 'Failed to create order. Please try again.');
+		}
+	};
 
 	const handleButtonPress = async (button: TButton) => {
 		switch (button.title) {
@@ -130,10 +166,22 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 				return;
 			case 'Device Location':
 				getLocationPermission();
-				break;
+				return;
 			case 'HTML To PDF':
 				createPDF();
-				break;
+				return;
+			case 'Razorpay':
+				handlePayPress();
+				return;
+			case 'Dropdown View':
+				<DropDown
+					label={'State'}
+					placeholder={'Select State'}
+					headerTitle={'Select State'}
+					data={states}
+					onSelect={(item) => setSelectedState(item)}
+				/>;
+				return;
 			default:
 				return '';
 		}
