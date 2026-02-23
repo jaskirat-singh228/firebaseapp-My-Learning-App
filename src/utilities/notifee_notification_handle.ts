@@ -10,7 +10,6 @@ import notifee, {
 import { AuthorizationStatus, FirebaseMessagingTypes } from '@react-native-firebase/messaging';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AppStackParamList } from 'types/navigation_types';
-import { IS_IOS } from './constants';
 
 export type NotificationData = {
 	[key: string]: string | object | number;
@@ -35,8 +34,8 @@ export const displayNotification = async (remoteMsg: FirebaseMessagingTypes.Remo
 		const data = remoteMsg?.data;
 		const notification = remoteMsg?.notification; // for ios
 
-		const title = IS_IOS ? (notification?.title ?? '') : (data?.title ?? '')?.toString();
-		const body = IS_IOS ? (notification?.body ?? '') : (data?.body ?? '')?.toString();
+		const title = (notification?.title ?? '')?.toString();
+		const body = (notification?.body ?? '')?.toString();
 
 		// notifee displayNotification
 		const notificationId = await notifee.displayNotification({
@@ -101,7 +100,7 @@ export const notificationNavigationHandler = (
 
 	switch (Number(type)) {
 		case 1:
-			navigation.navigate('DashBoardScreen');
+			navigation.navigate('BottomTabDashboardScreen');
 			break;
 		default:
 			return;
