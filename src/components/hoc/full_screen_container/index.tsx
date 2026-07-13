@@ -18,7 +18,7 @@ const FullScreenContainerComp: React.FC<FullScreenContainerCompProps> = (props) 
 		children,
 		paddingBottom,
 		paddingTop,
-		headerColor = theme.colors.background,
+		headerColor = theme.colors.primary,
 		footerColor,
 		style,
 	} = props;
@@ -37,14 +37,14 @@ const FullScreenContainerComp: React.FC<FullScreenContainerCompProps> = (props) 
 			{headerHeight > 0 && (
 				<View
 					style={{
-						backgroundColor: headerColor,
+						backgroundColor: headerColor ?? theme.colors.background,
 						width: '100%',
 						height: headerHeight,
 					}}
 				/>
 			)}
 			<View style={[{ flex: 1, width: '100%' }, style]}>{children}</View>
-			{footerPadding > 0 && (
+			{/* {footerPadding > 0 && (
 				<View
 					style={{
 						backgroundColor: footerColor ?? theme.colors.background,
@@ -52,7 +52,7 @@ const FullScreenContainerComp: React.FC<FullScreenContainerCompProps> = (props) 
 						height: footerPadding,
 					}}
 				/>
-			)}
+			)} */}
 		</View>
 	);
 };

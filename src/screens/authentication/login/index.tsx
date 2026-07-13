@@ -5,13 +5,13 @@ import BaseTextInput from 'components/base_components/base_text_input';
 import AnimatedLoaderButton from 'components/molecules/animated_loader_button';
 import { useFirebaseGoogleSignIn } from 'hooks/firebase/authentication/useFirebaseGoogleSignUp';
 import { useFirebaseLogin } from 'hooks/firebase/authentication/useFirebaseLogin';
+import { useTranslation } from 'hooks/useTranslation';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { KeyboardAvoidingView, ScrollView, StyleSheet } from 'react-native';
 import { TextInput, useTheme } from 'react-native-paper';
 import { AuthenticationStackParamList } from 'types/navigation_types';
 import { ms, vs } from 'utilities/scale_utils';
-// import NativeLocalStorage from 'specs/NativeLocalStorage';
 
 type LoginScreenProps = NativeStackScreenProps<AuthenticationStackParamList, 'LoginScreen'>;
 
@@ -22,6 +22,7 @@ export type TFormData = {
 
 const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 	const theme = useTheme();
+	const { t } = useTranslation();
 	const { isConnected } = useNetInfo();
 	const { isGoogleSignInLoading, signInWithGoogle } = useFirebaseGoogleSignIn(
 		isConnected ?? false,
@@ -43,10 +44,6 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 		});
 	}, []);
 
-	React.useCallback(() => {
-		// NativeLocalStorage.setItem('username', 'kirat');
-	}, []);
-
 	return (
 		<ScrollView contentContainerStyle={style.scrollContentContainer}>
 			<KeyboardAvoidingView
@@ -62,7 +59,7 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 				<Controller
 					control={control}
 					name={'email'}
-					rules={{ required: 'Email cannot be empty!' }}
+					rules={{ required: t('validation.emailRequired') }}
 					render={({ field: { onBlur, value } }) => (
 						<BaseTextInput
 							value={value}
@@ -72,8 +69,8 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 							}}
 							onBlur={onBlur}
 							outlineColor={theme.colors.borderColor.regular}
-							labelValue={'Email'}
-							placeholder={'Enter Email...'}
+							labelValue={t('common.email')}
+							placeholder={t('common.emailPlaceholder')}
 							errorValue={errors?.email?.message ?? ''}
 						/>
 					)}
@@ -81,7 +78,7 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 				<Controller
 					control={control}
 					name={'password'}
-					rules={{ required: 'Password cannot be empty!' }}
+					rules={{ required: t('validation.passwordRequired') }}
 					render={({ field: { onBlur, value } }) => (
 						<BaseTextInput
 							value={value}
@@ -91,8 +88,8 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 							}}
 							onBlur={onBlur}
 							outlineColor={theme.colors.borderColor.regular}
-							labelValue={'Password'}
-							placeholder={'Enter Password...'}
+							labelValue={t('common.password')}
+							placeholder={t('common.passwordPlaceholder')}
 							secureTextEntry={!showPassword}
 							right={
 								<TextInput.Icon
@@ -107,16 +104,16 @@ const LoginScreen: React.FC<LoginScreenProps> = (props) => {
 
 				<AnimatedLoaderButton
 					isLoading={isLoginLoading}
-					title={'Login'}
+					title={t('common.login')}
 					onPress={handleSubmit(firebaseLogin)}
 				/>
 				<AnimatedLoaderButton
-					title={'Sign Up'}
+					title={t('authentication.signUp')}
 					onPress={() => props.navigation.navigate('SignUpScreen')}
 				/>
 				<AnimatedLoaderButton
 					isLoading={isGoogleSignInLoading}
-					title={'Login with google'}
+					title={t('authentication.loginWithGoogle')}
 					onPress={signInWithGoogle}
 					disabled={isGoogleSignInLoading}
 				/>

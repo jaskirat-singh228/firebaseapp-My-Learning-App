@@ -18,9 +18,6 @@ const AuthenticationNavigator: React.FC = () => {
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
-				statusBarStyle: 'light',
-				statusBarTranslucent: false,
-				statusBarBackgroundColor: theme.colors.statusBar.backgroundColor,
 			}}
 			initialRouteName={userLoginStatus.isUserLoggedOut ? 'LoginScreen' : 'SplashScreen'}
 		>

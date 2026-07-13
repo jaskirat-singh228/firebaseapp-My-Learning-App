@@ -2,10 +2,12 @@ import Geolocation from '@react-native-community/geolocation';
 import crashlytics from '@react-native-firebase/crashlytics';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import BaseText from 'components/base_components/base_text';
 import AnimatedLoaderButton from 'components/molecules/animated_loader_button';
 import { DropDown, DropDownItem } from 'components/organisms/dropdown';
 import { useDialog } from 'context/app_dialog_provider';
 import { useFirebaseNotifications } from 'hooks/firebase/useFirebaseNotifications';
+import { useTranslation } from 'hooks/useTranslation';
 import React, { useCallback } from 'react';
 import { Alert, Linking, ScrollView, StyleSheet, View } from 'react-native';
 import { MaterialBottomTabScreenProps } from 'react-native-paper';
@@ -15,7 +17,6 @@ import { AppStackParamList, BottomTabNavigatorParamList } from 'types/navigation
 import { AnalyticEvent } from 'utilities/analytic_event';
 import { SCREEN_WIDTH } from 'utilities/constants';
 import { ms, vs } from 'utilities/scale_utils';
-import { createPDF } from 'utilities/utils';
 
 type HomeScreenProps = MaterialBottomTabScreenProps<BottomTabNavigatorParamList, 'HomeScreen'>;
 
@@ -46,6 +47,7 @@ export const states: DropDownItem[] = [
 
 const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 	useFirebaseNotifications();
+	const { t } = useTranslation();
 	const { showDialog, hideDialog } = useDialog();
 	const { top } = useSafeAreaInsets();
 	const [selectedState, setSelectedState] = React.useState<DropDownItem | null>(null);
@@ -91,7 +93,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 		{ id: 7, title: 'Top Tab Bars' },
 		{ id: 8, title: 'Device Contacts' },
 		{ id: 9, title: 'Device Location' },
-		{ id: 10, title: 'HTML To PDF' },
+		// { id: 10, title: 'HTML To PDF' },
 		{ id: 11, title: 'Razorpay' },
 		{ id: 12, title: 'Dropdown View' },
 	];
@@ -103,7 +105,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 				description: 'Credits towards consultation',
 				image: 'https://dummyjson.com/icon/emilys/128',
 				currency: 'INR',
-				key: 'rzp_test_S2va5o3zko0xcK',
+				key: 'rzp_test_S2va5o3zko0xcK', // unique for each app
 				amount: 500, // Amount is already in paise from Razorpay API
 				name: 'Test User',
 				order_id: '1', // Use the order ID from created order
@@ -113,6 +115,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 				},
 				theme: { color: '#53a20e' },
 			};
+
 			RazorpayCheckout.open(options)
 				.then((data) => {
 					// Alert.alert(`Success: ${data.razorpay_payment_id}`);
@@ -167,9 +170,10 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 			case 'Device Location':
 				getLocationPermission();
 				return;
-			case 'HTML To PDF':
-				createPDF();
-				return;
+			// case 'HTML To PDF':
+			// 	 createPDF();
+			// 	Alert.alert('Coming Soon', 'PDF generation will be available soon.');
+			// 	return;
 			case 'Razorpay':
 				handlePayPress();
 				return;
@@ -194,10 +198,12 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 				padding: ms(15),
 				paddingTop: top,
 				paddingBottom: ms(80),
-				backgroundColor: '#FFFFFF',
 			}}
 		>
 			<View style={style.container}>
+				<BaseText style={{ fontSize: ms(24), fontWeight: 'bold', marginBottom: ms(10) }}>
+					{t('dashboard.home')}
+				</BaseText>
 				{buttonList.map((button: TButton) => (
 					<AnimatedLoaderButton
 						key={button.id}
@@ -207,6 +213,33 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 						onPress={() => handleButtonPress(button)}
 					/>
 				))}
+
+				<View
+					style={{
+						marginTop: ms(30),
+						width: '100%',
+						padding: ms(15),
+						backgroundColor: '#f0f0f0',
+						borderRadius: ms(10),
+					}}
+				>
+					<BaseText
+						style={{ fontSize: ms(18), fontWeight: 'bold', marginBottom: ms(10) }}
+					>
+						{t('labels.time')} {t('common.info')}
+					</BaseText>
+					<BaseText>
+						{t('time.today')}: {new Date().toLocaleDateString()}
+					</BaseText>
+					<BaseText>
+						{t('time.yesterday')}:{' '}
+						{new Date(Date.now() - 86400000).toLocaleDateString()}
+					</BaseText>
+					<BaseText>
+						{t('time.tomorrow')}: {new Date(Date.now() + 86400000).toLocaleDateString()}
+					</BaseText>
+					<BaseText>{t('time.thisWeek')}: ...</BaseText>
+				</View>
 			</View>
 		</ScrollView>
 	);
@@ -218,6 +251,7 @@ const style = StyleSheet.create({
 	mainContainer: {
 		flex: 1,
 		width: '100%',
+		backgroundColor: '#FFFFFF',
 	},
 	container: {
 		gap: vs(10),

@@ -14,6 +14,17 @@ if linkage != nil
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# Force RNFB pods to build as static libraries to avoid modular header conflicts
+pre_install do |installer|
+  installer.pod_targets.each do |pod|
+    if pod.name.start_with?('RNFB')
+      def pod.build_type
+        Pod::BuildType.static_library
+      end
+    end
+  end
+end
+
 target 'firebaseapp' do
   config = use_native_modules!
   pod 'RNFS', :path => '../node_modules/react-native-fs'
@@ -35,5 +46,15 @@ target 'firebaseapp' do
       :mac_catalyst_enabled => false,
       # :ccache_enabled => true
     )
+
+    # # Fix modular header issues for RNFirebase pods
+    # installer.pods_project.targets.each do |target|
+    #   if target.name.start_with?('RNFB')
+    #     target.build_configurations.each do |build_config|
+    #       build_config.build_settings['DEFINES_MODULE'] = 'NO'
+    #     end
+    #   end
+    # end
   end
 end
+

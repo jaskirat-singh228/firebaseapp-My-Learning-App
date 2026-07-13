@@ -32,7 +32,6 @@ const loginSlice = createSlice({
 				AsyncStorageKeys.USER_TOKEN,
 				action?.payload?.responseData?.token ?? '',
 			);
-
 			SaveDataToAsyncStorage(
 				AsyncStorageKeys.USER_LOGIN_DATA,
 				JSON.stringify(action?.payload ?? ''),

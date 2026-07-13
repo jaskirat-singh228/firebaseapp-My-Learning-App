@@ -9,11 +9,13 @@ export const style = (theme: MD3CustomTheme) =>
 		},
 		textInput: {
 			backgroundColor: theme.colors.textInput.background,
-			borderRadius: theme.radius.large,
+			borderRadius: theme.radius.regular,
 			width: '90%',
 			alignSelf: 'center',
 			margin: ms(10),
 			justifyContent: 'center',
+			borderWidth: ms(1),
+			borderColor: theme.colors.borderColor.regular,
 			...theme.fonts.regular,
 		},
 		label: {

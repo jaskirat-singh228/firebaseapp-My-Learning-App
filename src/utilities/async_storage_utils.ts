@@ -1,6 +1,16 @@
 // Async Storage Utils for maintaining any operation and functions related to it.
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const AsyncStorageKeys = {
+	LOGIN_STATUS: 'LOGIN_STATUS',
+	USER_LOGIN_DATA: 'USER_LOGIN_DATA',
+	USER_TOKEN: 'USER_TOKEN',
+	REFRESH_TOKEN: 'REFRESH_TOKEN',
+	SELECTED_LANGUAGE: 'SELECTED_LANGUAGE',
+	SELECTED_THEME: 'SELECTED_THEME',
+	SAVED_ADDRESSES: 'SAVED_ADDRESSES',
+};
+
 /**
  * function SaveDataToAsyncStorage: it will store any value that is provided, with key mentioned into Async Storage.
  * @param {string} key : key defines key that is used for storing data, keys are mentioned in Constants under SK.
@@ -12,7 +22,6 @@ export const SaveDataToAsyncStorage = async (key: string, value: string) => {
 		await AsyncStorage.setItem(key, value);
 	} catch (error) {
 		// error in saving data to async storage.
-		console.error(error?.message);
 	}
 };
 
@@ -26,7 +35,6 @@ export const DeleteDataFromAsyncStorage = async (key: string) => {
 		await AsyncStorage.removeItem(key);
 	} catch (error) {
 		// error in deleting data from async storage.
-		console.error(error?.message);
 	}
 };
 
@@ -39,9 +47,8 @@ export const ReadDataFromAsyncStorage = async (key: string) => {
 	let value: string | null = null;
 	try {
 		value = await AsyncStorage.getItem(key);
-	} catch (error: any) {
+	} catch (error) {
 		// error in getting data from async storage.
-		console.error(error?.message);
 	}
 	return value;
 };
@@ -53,8 +60,7 @@ export const ReadDataFromAsyncStorage = async (key: string) => {
 export const ClearDataFromAsyncStorage = async () => {
 	try {
 		await AsyncStorage.clear();
-	} catch (error: any) {
+	} catch (error) {
 		// error in deleting data from async storage.
-		console.error('Error', error?.message);
 	}
 };

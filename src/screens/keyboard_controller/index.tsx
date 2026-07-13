@@ -9,6 +9,8 @@ import {
 	useReanimatedKeyboardAnimation,
 } from 'react-native-keyboard-controller';
 import Animated, { interpolate, useAnimatedStyle } from 'react-native-reanimated';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ms } from 'react-native-size-matters';
 import { AppStackParamList } from 'types/navigation_types';
 import { SCREEN_WIDTH } from 'utilities/constants';
 
@@ -19,6 +21,7 @@ type KeyBoardControllerScreenProps = NativeStackScreenProps<
 
 const KeyBoardControllerScreen: React.FC<KeyBoardControllerScreenProps> = () => {
 	const { height, progress } = useReanimatedKeyboardAnimation();
+	const insets = useSafeAreaInsets();
 
 	const animatedBoxStyle = useAnimatedStyle(() => {
 		const scale = interpolate(progress.value, [0, 1], [1, 1.3]);
@@ -30,10 +33,12 @@ const KeyBoardControllerScreen: React.FC<KeyBoardControllerScreenProps> = () => 
 	useKeyboardHandler(
 		{
 			onMove: (e) => {
+				'worklet';
 				progress.value = e.progress;
 				height.value = e.height;
 			},
 			onEnd: (e) => {
+				'worklet';
 				progress.value = e.progress;
 				height.value = e.height;
 			},
@@ -48,13 +53,18 @@ const KeyBoardControllerScreen: React.FC<KeyBoardControllerScreenProps> = () => 
 			<TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
 				<KeyboardAvoidingView
 					behavior='padding'
-					keyboardVerticalOffset={80}
+					keyboardVerticalOffset={ms(16)}
 					style={styles.container}
 				>
 					<Animated.View style={[styles.box, animatedBoxStyle]} />
 
 					<TextInput
-						style={styles.input}
+						style={[
+							styles.input,
+							{
+								marginBottom: insets.bottom ? insets.bottom + 20 : 20,
+							},
+						]}
 						placeholder='Type here...'
 						placeholderTextColor='#333'
 						returnKeyType='done'

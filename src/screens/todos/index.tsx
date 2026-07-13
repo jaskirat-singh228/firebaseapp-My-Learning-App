@@ -97,7 +97,7 @@ const TodoScreen: React.FC<TodoScreenProps> = () => {
 
 	const addUpdateTodo = React.useCallback(async () => {
 		if (!value.trim()) {
-			showToast('Please enter a text!', 'error');
+			showToast('Please enter a text!', 'danger');
 			return;
 		}
 
@@ -131,7 +131,7 @@ const TodoScreen: React.FC<TodoScreenProps> = () => {
 			setTodoList(res.data);
 		} catch (err) {
 			console.error(`${isEdit ? 'Update' : 'Add'} failed:`, err);
-			showToast('Something went wrong', 'error');
+			showToast('Something went wrong', 'danger');
 		}
 	}, [isConnected, value, editTodo]);
 

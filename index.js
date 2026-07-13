@@ -5,6 +5,7 @@
 import notifee, { EventType } from '@notifee/react-native';
 import messaging from '@react-native-firebase/messaging';
 import { AppRegistry } from 'react-native';
+import 'react-native-get-random-values'; //for todos
 import { setNotificationData } from 'utilities/initial_notification_data';
 import { backgroundMessageHandler } from 'utilities/notifee_notification_handle';
 import App from './App';

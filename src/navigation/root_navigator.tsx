@@ -4,48 +4,52 @@ import { useThemeContext } from 'context/theme_provider';
 import AppNavigator from 'navigation/app_navigator';
 import AuthenticationNavigator from 'navigation/auth_navigator';
 import React, { useRef } from 'react';
+import { StatusBar } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useSelector } from 'react-redux';
 import { RootState } from 'store';
-import { getNotificationData } from 'utilities/initial_notification_data';
+import { IS_ANDROID } from 'utilities/constants';
 
 const RootStack = createNativeStackNavigator();
+
 const RootNavigator: React.FC = () => {
 	const userLoginStatus = useSelector((state: RootState) => state.loginData);
 	const { isDarkTheme } = useThemeContext();
 	const theme = useTheme();
 	const navigationRef = useRef<NavigationContainerRef<ReactNavigation.RootParamList>>(null);
 	const [navReady, setNavReady] = React.useState(false);
+	const statusBarStyle = 'light';
+	const statusBarBackgroundColor = theme.colors.primary;
 
-	React.useEffect(() => {
-		if (navReady) {
-			const data = getNotificationData();
-			if (data) {
-				if (navigationRef.current) {
-					// notificationNavigationHandler(data, navigationRef.current);
-				}
-			}
-		}
-	}, [navReady]);
+	// React.useEffect(() => {
+	// 	if (navReady) {
+	// 		const data = getNotificationData();
+	// 		if (data) {
+	// 			if (navigationRef.current) {
+	// 				// notificationNavigationHandler(data, navigationRef.current);
+	// 			}
+	// 		}
+	// 	}
+	// }, [navReady]);
 
-	const linking = {
-		prefixes: ['https://firebase-app-ruddy.vercel.app'],
-		config: {
-			screens: {
-				AppNavigator: {
-					path: 'app',
-					screens: {
-						TodoScreen: 'post/:id',
-					},
-				},
-			},
-		},
-	};
+	// const linking = {
+	// 	prefixes: ['https://firebase-app-ruddy.vercel.app'],
+	// 	config: {
+	// 		screens: {
+	// 			AppNavigator: {
+	// 				path: 'app',
+	// 				screens: {
+	// 					TodoScreen: 'post/:id',
+	// 				},
+	// 			},
+	// 		},
+	// 	},
+	// };
 
 	return (
 		<NavigationContainer
-			linking={linking}
-			ref={navigationRef}
+			// linking={linking}
+			// ref={navigationRef}
 			onReady={() => {
 				setTimeout(() => {
 					setNavReady(true);
@@ -81,12 +85,19 @@ const RootNavigator: React.FC = () => {
 				},
 			}}
 		>
+			{IS_ANDROID && (
+				<StatusBar
+					barStyle={isDarkTheme ? 'light-content' : 'dark-content'}
+					translucent
+					backgroundColor='transparent'
+				/>
+			)}
 			<RootStack.Navigator
 				screenOptions={{
 					headerShown: false,
-					statusBarStyle: 'light',
+					statusBarStyle: statusBarStyle,
 					statusBarTranslucent: false,
-					statusBarBackgroundColor: theme.colors.statusBar.backgroundColor,
+					statusBarBackgroundColor: statusBarBackgroundColor,
 				}}
 			>
 				{userLoginStatus.isUserLoggedIn ? (

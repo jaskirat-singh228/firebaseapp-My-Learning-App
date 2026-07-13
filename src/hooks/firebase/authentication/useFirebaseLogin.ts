@@ -4,11 +4,12 @@ import React from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { TFormData } from 'screens/authentication/login';
+import { userLogin } from 'store/slices/login_slice';
 import {
 	TValidateLoginDetailData,
 	TValidateLoginDetailResponse,
 } from 'types/api_response_data_models';
-import { loginUser, showToast } from 'utilities/utils';
+import { showToast } from 'utilities/utils';
 
 export const useFirebaseLogin = (isConnected: boolean | null) => {
 	const [isLoginLoading, setIsLoginLoading] = React.useState<boolean>(false);
@@ -40,12 +41,12 @@ export const useFirebaseLogin = (isConnected: boolean | null) => {
 						responseData: data,
 					};
 					if (isConnected) {
-						loginUser(dispatch, response);
+						dispatch(userLogin(response));
 						showToast(response.message, 'success');
 					} else
 						return showToast(
 							'No internet available! Please check your internet connection.',
-							'error',
+							'danger',
 						);
 
 					const isUserPresent = await firestore()
@@ -53,20 +54,20 @@ export const useFirebaseLogin = (isConnected: boolean | null) => {
 						.where('email', '==', values?.email ?? '')
 						.get();
 					const isPassword = isUserPresent.docs[0].data().password;
-					if (isPassword === '') showToast('Login with google.', 'error');
+					if (isPassword === '') showToast('Login with google.', 'danger');
 				} catch (error) {
 					console.error(error);
 				}
 			}
 		} catch (error: any) {
 			if (error.code === 'auth/invalid-email') {
-				showToast('The email address is badly formatted!', 'error');
+				showToast('The email address is badly formatted!', 'danger');
 			} else if (error.code === 'auth/invalid-credential') {
-				showToast('Invalid credentials!', 'error');
+				showToast('Invalid credentials!', 'danger');
 			} else if (error.code === 'auth/too-many-requests') {
 				showToast(
 					'We have blocked all requests from this device due to unusual activity. Try again later.',
-					'error',
+					'danger',
 				);
 			}
 		} finally {

@@ -1,0 +1,81 @@
+{
+	"common": {
+		"welcome": "स्वागत है",
+		"logout": "लॉगआउट",
+		"close": "बंद करें",
+		"cancel": "रद्द करें",
+		"confirm": "पुष्टि करें",
+		"save": "सहेजें",
+		"delete": "हटाएं",
+		"edit": "संपादित करें",
+		"submit": "जमा करें",
+		"reset": "रीसेट",
+		"search": "खोजें",
+		"loading": "लोड हो रहा है...",
+		"error": "त्रुटि",
+		"success": "सफलता",
+		"info": "जानकारी",
+		"yes": "हाँ",
+		"no": "नहीं",
+		"ok": "ठीक है",
+		"retry": "पुनः प्रयास करें",
+		"back": "वापस",
+		"next": "अगला",
+		"noDataFound": "कोई डेटा नहीं मिला!",
+		"done": "हो गया",
+		"skip": "छोड़ें",
+		"continue": "जारी रखें",
+		"select": "चुनें",
+		"change": "बदलें",
+		"update": "अपडेट करें",
+		"email": "ईमेल",
+		"emailPlaceholder": "अपना ईमेल पता दर्ज करें",
+		"password": "पासवर्ड",
+		"passwordPlaceholder": "अपना पासवर्ड दर्ज करें",
+		"login": "लॉगिन"
+	},
+	"settings": {
+		"title": "सेटिंग्स",
+		"changeTheme": "थीम बदलें",
+		"changeLanguage": "भाषा बदलें",
+		"selectTheme": "थीम चुनें",
+		"selectLanguage": "भाषा चुनें",
+		"choosePreferredLanguage": "अपनी पसंदीदा भाषा चुनें",
+		"light": "लाइट",
+		"dark": "डार्क",
+		"systemDefault": "सिस्टम डिफॉल्ट",
+		"english": "अंग्रेज़ी",
+		"hindi": "हिंदी",
+		"logoutTitle": "लॉगआउट",
+		"logoutMessage": "क्या आप लॉगआउट करना चाहते हैं?"
+	},
+	"authentication": {
+		"loginSuccessful": "लॉगिन सफल",
+		"signUp": "साइन अप करें",
+		"loginWithGoogle": "गूगल के साथ लॉगिन करें",
+		"welcomeBack": "वापसी पर स्वागत है"
+	},
+	"dashboard": {
+		"home": "होम",
+		"settings": "सेटिंग्स",
+		"profile": "प्रोफ़ाइल"
+	},
+	"validation": {
+		"requiredField": "यह फ़ील्ड आवश्यक है",
+		"emailRequired": "ईमेल खाली नहीं हो सकता!",
+		"passwordRequired": "पासवर्ड खाली नहीं हो सकता!",
+		"invalidEmail": "कृपया एक वैध ईमेल पता दर्ज करें",
+		"passwordTooShort": "पासवर्ड कम से कम 8 अक्षर का होना चाहिए"
+	},
+	"time": {
+		"today": "आज",
+		"yesterday": "कल",
+		"tomorrow": "आने वाला कल",
+		"thisWeek": "इस सप्ताह",
+		"thisMonth": "इस महीने",
+		"thisYear": "इस साल"
+	},
+	"labels": {
+		"time": "समय"
+	}
+}

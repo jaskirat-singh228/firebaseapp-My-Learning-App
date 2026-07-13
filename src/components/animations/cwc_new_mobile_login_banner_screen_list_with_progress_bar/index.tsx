@@ -28,7 +28,7 @@ type TBannerImage = {
 const bannerImagesList: TBannerImage[] = [
 	{
 		id: '1',
-		image: require('assets/images/login_banner1.png'),
+		image: require('assets/images/fab-button.png'),
 		title1: 'Book a survey ',
 		title2: 'for your home.',
 		description1:
@@ -37,7 +37,7 @@ const bannerImagesList: TBannerImage[] = [
 	},
 	{
 		id: '2',
-		image: require('assets/images/login_banner2.png'),
+		image: require('assets/images/fab-button.png'),
 		title1: 'Schedule a service ',
 		title2: 'for your home.',
 		description1: 'Get a tailored pest control plan for your home. ',
@@ -45,7 +45,7 @@ const bannerImagesList: TBannerImage[] = [
 	},
 	{
 		id: '3',
-		image: require('assets/images/survey1.png'),
+		image: require('assets/images/fab-button.png'),
 		title1: 'Book a survey ',
 		title2: 'for your home.',
 		description1:

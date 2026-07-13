@@ -9,9 +9,10 @@ import { StyleSheet, View } from 'react-native';
 import { MaterialBottomTabScreenProps, useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'store';
+import { userLogout } from 'store/slices/login_slice';
 import { BottomTabNavigatorParamList } from 'types/navigation_types';
 import { vs } from 'utilities/scale_utils';
-import { logoutUser, showToast } from 'utilities/utils';
+import { showToast } from 'utilities/utils';
 
 type ProfileScreenProps = MaterialBottomTabScreenProps<
 	BottomTabNavigatorParamList,
@@ -35,11 +36,11 @@ const ProfileScreen: React.FC<ProfileScreenProps> = () => {
 				try {
 					await auth().signOut();
 					await GoogleSignin.signOut();
-					logoutUser(dispatch);
+					dispatch(userLogout());
 					showToast('User logged out successfully!', 'success');
 				} catch (error) {
 					console.error('Firebase sign out error:', error);
-					showToast('Failed to logout. Try again.', 'error');
+					showToast('Failed to logout. Try again.', 'danger');
 				} finally {
 					hideDialog();
 				}

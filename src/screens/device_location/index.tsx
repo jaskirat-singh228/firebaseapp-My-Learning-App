@@ -18,7 +18,7 @@ const LocationScreen: React.FC<LocationScreenProps> = () => {
 	React.useEffect(() => {
 		Geolocation.getCurrentPosition(
 			(position) => setLocation(position.coords),
-			(error) => showToast(error.message, 'error'),
+			(error) => showToast(error.message, 'danger'),
 			{ enableHighAccuracy: true, timeout: 60000 },
 		);
 	}, []);

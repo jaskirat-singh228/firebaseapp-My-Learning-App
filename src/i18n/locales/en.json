@@ -1,0 +1,81 @@
+{
+	"common": {
+		"welcome": "Welcome",
+		"logout": "Logout",
+		"close": "Close",
+		"cancel": "Cancel",
+		"confirm": "Confirm",
+		"save": "Save",
+		"delete": "Delete",
+		"edit": "Edit",
+		"submit": "Submit",
+		"reset": "Reset",
+		"search": "Search",
+		"loading": "Loading...",
+		"error": "Error",
+		"success": "Success",
+		"info": "Info",
+		"yes": "Yes",
+		"no": "No",
+		"ok": "OK",
+		"retry": "Retry",
+		"back": "Back",
+		"next": "Next",
+		"noDataFound": "No Data Found!",
+		"done": "Done",
+		"skip": "Skip",
+		"continue": "Continue",
+		"select": "Select",
+		"change": "Change",
+		"update": "Update",
+		"email": "Email",
+		"emailPlaceholder": "Enter your email address",
+		"password": "Password",
+		"passwordPlaceholder": "Enter your password",
+		"login": "Login"
+	},
+	"settings": {
+		"title": "Settings",
+		"changeTheme": "Change Theme",
+		"changeLanguage": "Change Language",
+		"selectTheme": "Select Theme",
+		"selectLanguage": "Select Language",
+		"choosePreferredLanguage": "Choose your preferred language",
+		"light": "Light",
+		"dark": "Dark",
+		"systemDefault": "System Default",
+		"english": "English",
+		"hindi": "Hindi",
+		"logoutTitle": "Logout",
+		"logoutMessage": "Do you want to logout?"
+	},
+	"authentication": {
+		"loginSuccessful": "Login successful",
+		"signUp": "Sign Up",
+		"loginWithGoogle": "Login with Google",
+		"welcomeBack": "Welcome Back"
+	},
+	"dashboard": {
+		"home": "Home",
+		"settings": "Settings",
+		"profile": "Profile"
+	},
+	"validation": {
+		"requiredField": "This field is required",
+		"emailRequired": "Email cannot be empty!",
+		"passwordRequired": "Password cannot be empty!",
+		"invalidEmail": "Please enter a valid email address",
+		"passwordTooShort": "Password must be at least 8 characters"
+	},
+	"time": {
+		"today": "Today",
+		"yesterday": "Yesterday",
+		"tomorrow": "Tomorrow",
+		"thisWeek": "This Week",
+		"thisMonth": "This Month",
+		"thisYear": "This Year"
+	},
+	"labels": {
+		"time": "Time"
+	}
+}

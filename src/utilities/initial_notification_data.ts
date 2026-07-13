@@ -1,4 +1,4 @@
-import { NotificationData } from './notifee_notification_handle';
+import { NotificationData } from './notification_handler';
 
 let initialNotificationData: NotificationData | null = null;
 

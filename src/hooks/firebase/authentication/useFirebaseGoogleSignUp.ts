@@ -4,11 +4,12 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { FirebaseError } from 'firebase/app';
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { userLogin } from 'store/slices/login_slice';
 import {
 	TValidateLoginDetailData,
 	TValidateLoginDetailResponse,
 } from 'types/api_response_data_models';
-import { loginUser, showToast } from 'utilities/utils';
+import { showToast } from 'utilities/utils';
 
 export const useFirebaseGoogleSignIn = (isConnected: boolean | null) => {
 	const [isGoogleSignInLoading, setIsGoogleSignInLoading] = React.useState<boolean>(false);
@@ -51,16 +52,16 @@ export const useFirebaseGoogleSignIn = (isConnected: boolean | null) => {
 				const response: TValidateLoginDetailResponse = {
 					success: true,
 					message: 'Login successful!',
-					responseData: responseData,
+					responseData,
 				};
 				if (type === 'success') {
-					loginUser(dispatch, response);
+					dispatch(userLogin(response));
 					showToast(response.message, 'success');
 				} else return;
 			} else {
 				return showToast(
 					'No internet available! Please check your internet connection.',
-					'error',
+					'danger',
 				);
 			}
 		} catch (error) {

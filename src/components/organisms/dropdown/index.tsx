@@ -124,7 +124,7 @@ const DropDownComp: React.FC<BookServiceDropDownProps> = (props) => {
 		</View>
 	);
 };
-export const DropDown = DropDownComp as typeof DropDownComp;
+export const DropDown = DropDownComp;
 
 export type ModalHeaderCompProps = {
 	title: string;

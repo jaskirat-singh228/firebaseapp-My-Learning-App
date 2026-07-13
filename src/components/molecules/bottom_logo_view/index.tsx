@@ -9,7 +9,7 @@ const BottomLogoViewComp = () => {
 	return (
 		<View style={viewStyle.imageContainer}>
 			<Image
-				source={require('assets/images/cwc-full-logo.png')}
+				source={require('assets/images/fab-button.png')}
 				resizeMethod={'resize'}
 				resizeMode={'contain'}
 				style={viewStyle.logoImage}

@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { AppState, AppStateStatus, NativeEventSubscription } from 'react-native';
 import { useTheme } from 'react-native-paper';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AnimationDemoScreen from 'screens/animations/AnimationDemoScreen';
 import AppWelcomeAnimationScreen from 'screens/animations/app_welcome';
 import BottomTabDashBoardScreen from 'screens/bottom_tab_dashboard';
@@ -13,6 +13,7 @@ import NativeModuleScreen from 'screens/native_modules';
 import ReducerScreen from 'screens/reducer';
 import TodoScreen from 'screens/todos';
 import TopTabDashboardScreen from 'screens/top_tab_dashboard';
+import { RootState } from 'store';
 import { setShowPrivacyGuard } from 'store/slices/app_data_slice';
 import { AppStackParamList } from 'types/navigation_types';
 import { IS_ANDROID, IS_IOS } from 'utilities/constants';
@@ -23,15 +24,15 @@ const AppNavigator: React.FC = () => {
 	const theme = useTheme();
 	const dispatch = useDispatch();
 
+	const { loginData } = useSelector((state: RootState) => state.loginData);
+
 	React.useEffect(() => {
 		let subscription: NativeEventSubscription | null = null;
 		if (IS_IOS) {
 			subscription = AppState.addEventListener('change', handleAppStateChange);
 		}
 		return () => {
-			if (subscription) {
-				subscription?.remove();
-			}
+			subscription && subscription?.remove();
 		};
 	}, []);
 
@@ -49,9 +50,6 @@ const AppNavigator: React.FC = () => {
 		<Stack.Navigator
 			screenOptions={{
 				headerShown: false,
-				statusBarStyle: 'light',
-				statusBarTranslucent: false,
-				statusBarBackgroundColor: theme.colors.statusBar.backgroundColor,
 			}}
 		>
 			<Stack.Screen name={'BottomTabDashboardScreen'} component={BottomTabDashBoardScreen} />

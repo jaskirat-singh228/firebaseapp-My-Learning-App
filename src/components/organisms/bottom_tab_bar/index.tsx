@@ -3,7 +3,8 @@ import { CommonActions } from '@react-navigation/native';
 import BaseText from 'components/base_components/base_text';
 import React from 'react';
 import { BottomNavigation, Icon, MD3CustomTheme, useTheme } from 'react-native-paper';
-import { DashbordBottomTabBarParamList } from 'types/navigation_types';
+import { ms } from 'react-native-size-matters';
+import { BottomTabNavigatorParamList } from 'types/navigation_types';
 import {
 	BottomTabBarIconSize,
 	BottomTabBarLabelSize,
@@ -13,7 +14,7 @@ import {
 
 const getBottomTabIcon = (name: string, focused: boolean, theme: MD3CustomTheme) => {
 	const getIconName = () => {
-		const tabName = name as keyof DashbordBottomTabBarParamList;
+		const tabName = name as keyof BottomTabNavigatorParamList;
 		switch (tabName) {
 			case 'HomeScreen':
 				return focused ? MaterialIcon.HOME : MaterialIcon.HOME_OUTLINE;
@@ -37,7 +38,7 @@ const getBottomTabIcon = (name: string, focused: boolean, theme: MD3CustomTheme)
 };
 
 const getTabName = (name: string) => {
-	const tabName = name as keyof DashbordBottomTabBarParamList;
+	const tabName = name as keyof BottomTabNavigatorParamList;
 	switch (tabName) {
 		case 'HomeScreen':
 			return 'Home';
@@ -57,10 +58,11 @@ const BottomTabBarComp: React.FC<BottomTabBarProps> = (props) => {
 			safeAreaInsets={insets}
 			style={{
 				height: SCREEN_HEIGHT * 0.1,
-				backgroundColor: theme.colors.statusBar.backgroundColor,
+				borderTopWidth: ms(1),
+				borderColor: theme.colors.borderColor.regular,
 			}}
 			activeIndicatorStyle={{
-				backgroundColor: theme.colors.secondary,
+				backgroundColor: 'transparent',
 			}}
 			onTabPress={({ route, preventDefault }) => {
 				const event = navigation.emit({
@@ -85,8 +87,11 @@ const BottomTabBarComp: React.FC<BottomTabBarProps> = (props) => {
 						focused ? theme.fonts.bold : theme.fonts.regular,
 						{
 							alignSelf: 'center',
-							color: theme.colors.textColor.white,
+							color: focused
+								? theme.colors.bottomTabBar.titleSelected
+								: theme.colors.bottomTabBar.titleUnselected,
 							fontSize: BottomTabBarLabelSize,
+							lineHeight: ms(15),
 						},
 					]}
 				>

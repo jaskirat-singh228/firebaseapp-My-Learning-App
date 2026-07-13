@@ -13,6 +13,13 @@ declare module 'react-native-paper' {
 		infoContainer: string;
 		accent: string;
 		transparent: string;
+		commonColor: {
+			silverGray: string;
+			deepSeaBlue: string;
+			darkBlue: string;
+			lightGray: string;
+			veryLightGray: string;
+		};
 		buttonColor: {
 			regular: string;
 			alert: string;
@@ -84,6 +91,7 @@ declare module 'react-native-paper' {
 		card: {
 			cardBackground: string;
 		};
+		surfaceLight: string;
 	}
 
 	interface MD3ThemeFonts extends MD3Typescale {
@@ -100,10 +108,16 @@ declare module 'react-native-paper' {
 		circle: number;
 	}
 
+	interface WindowDimensions {
+		width: number;
+		height: number;
+	}
+
 	export interface MD3CustomTheme extends MD3Theme {
 		colors: MD3ThemeColors;
 		fonts: MD3ThemeFonts;
 		radius: BorderRoundness;
+		dimensions: WindowDimensions;
 	}
 
 	export function useTheme(): MD3CustomTheme;

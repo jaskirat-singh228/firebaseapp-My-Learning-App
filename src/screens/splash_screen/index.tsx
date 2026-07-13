@@ -10,13 +10,13 @@ import Animated, {
 } from 'react-native-reanimated';
 import Svg, { Defs, LinearGradient, Rect, Stop } from 'react-native-svg';
 import { useDispatch } from 'react-redux';
+import { userLogin } from 'store/slices/login_slice';
 import { TValidateLoginDetailResponse } from 'types/api_response_data_models';
 import { AuthenticationStackParamList } from 'types/navigation_types';
 import { AsyncStorageKeys } from 'utilities/async_storage_keys';
 import { ReadDataFromAsyncStorage } from 'utilities/async_storage_utils';
 import { FONT_BOLD, SCREEN_WIDTH } from 'utilities/constants';
 import { ms } from 'utilities/scale_utils';
-import { loginUser } from 'utilities/utils';
 type SplashScreenProps = NativeStackScreenProps<AuthenticationStackParamList, 'SplashScreen'>;
 
 const FROM_COLOR = 'rgb(193, 202, 195)';
@@ -79,7 +79,7 @@ const SplashScreen: React.FC<SplashScreenProps> = (props) => {
 		// is also available then move user to dashboard.
 		if (userLoginStatus && data) {
 			const loginData: TValidateLoginDetailResponse = JSON.parse(data);
-			loginUser(dispatch, loginData);
+			dispatch(userLogin(loginData));
 		} else {
 			// by default move user to login screen and remove splash screen from stack
 			// so that when user press back button it will not go back to splash screen.
@@ -99,7 +99,7 @@ const SplashScreen: React.FC<SplashScreenProps> = (props) => {
 				gap: ms(5),
 			}}
 		>
-			<Svg height='100%' width='100%' style={StyleSheet.absoluteFillObject}>
+			<Svg height='100%' width='100%' style={StyleSheet.absoluteFill}>
 				<Defs>
 					<LinearGradient id='grad' x1='0%' y1='0%' x2='0%' y2='100%'>
 						<Stop offset='0' stopColor={FROM_COLOR} />
@@ -117,7 +117,7 @@ const SplashScreen: React.FC<SplashScreenProps> = (props) => {
 						fontFamily: FONT_BOLD,
 					}}
 				>
-					{'My Learning App'}
+					My Learning App
 				</BaseText>
 			</Animated.View>
 			<Animated.View

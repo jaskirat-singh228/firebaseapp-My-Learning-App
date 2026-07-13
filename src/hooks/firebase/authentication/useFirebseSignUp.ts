@@ -35,14 +35,14 @@ export const useFirebaseSignUp = (isConnected: boolean | null) => {
 			}
 		} catch (error: any) {
 			if (error.code === 'auth/invalid-email') {
-				showToast('The email address is badly formatted!', 'error');
+				showToast('The email address is badly formatted!', 'danger');
 			} else if (error.code === 'auth/weak-password') {
-				showToast('The given password is too weak!', 'error');
+				showToast('The given password is too weak!', 'danger');
 			} else if (error.code === 'auth/email-already-in-use') {
-				showToast('The email address is already in use by another account!', 'error');
+				showToast('The email address is already in use by another account!', 'danger');
 			} else {
 				console.log(error, 'Unhandled signup error');
-				showToast('Something went wrong. Try again!', 'error');
+				showToast('Something went wrong. Try again!', 'danger');
 			}
 		} finally {
 			setIsSignUpLoading(false);
