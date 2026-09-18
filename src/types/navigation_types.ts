@@ -25,6 +25,7 @@ export type AppStackParamList = {
 	};
 	ContactScreen: undefined;
 	LocationScreen: undefined;
+	AadhaarFaceAuthScreen: undefined;
 };
 
 export type AuthenticationStackParamList = {

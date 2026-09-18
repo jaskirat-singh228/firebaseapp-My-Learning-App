@@ -10,7 +10,7 @@ import { AppStackParamList } from 'types/navigation_types';
 
 type NativeModuleScreenProps = NativeStackScreenProps<AppStackParamList, 'NativeModuleScreen'>;
 
-const NativeModuleScreen: React.FC<NativeModuleScreenProps> = () => {
+const NativeModuleScreen: React.FC<NativeModuleScreenProps> = (props) => {
 	return (
 		<FullScreenContainer>
 			<BackWithTitleHeader title='Native Modules' />
@@ -41,6 +41,12 @@ const NativeModuleScreen: React.FC<NativeModuleScreenProps> = () => {
 					onPress={() => {
 						// NativeLocalStorage.clear();
 						// NativeToast.NativeToast('Item clear into Native Local Storage');
+					}}
+				/>
+				<AnimatedLoaderButton
+					title='Aadhaar Face Auth (UIDAI)'
+					onPress={() => {
+						props.navigation.navigate('AadhaarFaceAuthScreen');
 					}}
 				/>
 			</View>

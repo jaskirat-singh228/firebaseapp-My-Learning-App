@@ -11,7 +11,7 @@ class MainActivity : ReactActivity() {
 
   /** React Native Screens Crash Fix */
   override fun onCreate(savedInstanceState: Bundle?) {
-      super.onCreate(savedInstanceState)
+      super.onCreate(null)
       // Prevents app preview in Recents and blocks screenshots
       window.setFlags(
           WindowManager.LayoutParams.FLAG_SECURE,

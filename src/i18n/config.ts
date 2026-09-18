@@ -1,10 +1,10 @@
-import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import {
 	AsyncStorageKeys,
 	ReadDataFromAsyncStorage,
 	SaveDataToAsyncStorage,
 } from 'utilities/async_storage_utils';
+import i18n from 'i18next';
 import en from './locales/en.json';
 import hi from './locales/hi.json';
 
@@ -21,7 +21,7 @@ const LANGUAGE_DETECTOR = {
 	detect: async (callback: (lng: string) => void) => {
 		try {
 			const savedLanguage = await ReadDataFromAsyncStorage(
-				AsyncStorageKeys.SELECTED_LANGUAGE
+				AsyncStorageKeys.SELECTED_LANGUAGE,
 			);
 			if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'hi')) {
 				callback(savedLanguage);

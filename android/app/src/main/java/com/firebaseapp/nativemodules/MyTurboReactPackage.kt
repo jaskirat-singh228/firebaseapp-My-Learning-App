@@ -11,6 +11,7 @@ class MyTurboReactPackage : BaseReactPackage() {
         return when (name) {
             NativeToastModule.NAME -> NativeToastModule(reactContext)
             NativeLocalStorageModule.NAME -> NativeLocalStorageModule(reactContext)
+            NativeAadhaarFaceAuthModule.NAME -> NativeAadhaarFaceAuthModule(reactContext)
             else -> null
         }
     }
@@ -28,6 +29,14 @@ class MyTurboReactPackage : BaseReactPackage() {
             NativeLocalStorageModule.NAME to ReactModuleInfo(
                 name = NativeLocalStorageModule.NAME,
                 className = NativeLocalStorageModule.NAME,
+                canOverrideExistingModule = false,
+                needsEagerInit = false,
+                isCxxModule = false,
+                isTurboModule = true
+            ),
+            NativeAadhaarFaceAuthModule.NAME to ReactModuleInfo(
+                name = NativeAadhaarFaceAuthModule.NAME,
+                className = NativeAadhaarFaceAuthModule.NAME,
                 canOverrideExistingModule = false,
                 needsEagerInit = false,
                 isCxxModule = false,

@@ -2,8 +2,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.firebaseapp">
 
+     <queries>
+        <package android:name="in.gov.uidai.facerd" />
+        <intent>
+            <action android:name="in.gov.uidai.rdservice.face.CAPTURE" />
+        </intent>
+        <intent>
+            <action android:name="in.gov.uidai.rdservice.face.LOCAL_FACE_MATCH" />
+        </intent>
+    </queries>
+
+  <!-- Aadhaar Face RD Service Permissions -->
+  <uses-permission android:name="android.permission.CAMERA" />
+
   <!-- Firebase + Notifee Permissions -->
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.WAKE_LOCK" />
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />

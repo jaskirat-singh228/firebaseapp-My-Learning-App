@@ -11,28 +11,30 @@ export const useFirebaseSignUp = (isConnected: boolean | null) => {
 	const [isSignUpLoading, setIsSignUpLoading] = React.useState<boolean>(false);
 
 	const firebaseSignUp: SubmitHandler<TFormData> = React.useCallback(async (values) => {
+		if (isConnected === false) {
+			showToast('No internet available! Please check your internet connection.', 'danger');
+			return;
+		}
 		setIsSignUpLoading(true);
 		try {
-			if (isConnected) {
-				const res = await auth().createUserWithEmailAndPassword(
-					values.email,
-					values.password,
-				);
+			const res = await auth().createUserWithEmailAndPassword(
+				values.email,
+				values.password,
+			);
 
-				const userId = res.user.uid;
-				await firestore().collection('Users').doc(userId).set({
-					userId: userId,
-					email: values.email,
-					password: values.password,
-					providerId: res.additionalUserInfo?.providerId,
-					createdAt: firestore.FieldValue.serverTimestamp(),
-				});
-				navigation.goBack;
-				showToast(
-					'You are registered successfuly, login with same credentials!',
-					'success',
-				);
-			}
+			const userId = res.user.uid;
+			await firestore().collection('Users').doc(userId).set({
+				userId: userId,
+				email: values.email,
+				password: values.password,
+				providerId: res.additionalUserInfo?.providerId,
+				createdAt: firestore.FieldValue.serverTimestamp(),
+			});
+			navigation.goBack;
+			showToast(
+				'You are registered successfuly, login with same credentials!',
+				'success',
+			);
 		} catch (error: any) {
 			if (error.code === 'auth/invalid-email') {
 				showToast('The email address is badly formatted!', 'danger');
@@ -42,7 +44,7 @@ export const useFirebaseSignUp = (isConnected: boolean | null) => {
 				showToast('The email address is already in use by another account!', 'danger');
 			} else {
 				console.log(error, 'Unhandled signup error');
-				showToast('Something went wrong. Try again!', 'danger');
+				showToast(error?.message || 'Something went wrong. Try again!', 'danger');
 			}
 		} finally {
 			setIsSignUpLoading(false);

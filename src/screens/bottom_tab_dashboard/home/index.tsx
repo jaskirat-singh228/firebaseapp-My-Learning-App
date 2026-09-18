@@ -96,6 +96,7 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 		// { id: 10, title: 'HTML To PDF' },
 		{ id: 11, title: 'Razorpay' },
 		{ id: 12, title: 'Dropdown View' },
+		{ id: 13, title: 'Aadhaar Face Auth (UIDAI FaceRD)' },
 	];
 
 	const handlePayPress = async () => {
@@ -185,6 +186,9 @@ const HomeScreen: React.FC<HomeScreenProps> = (props) => {
 					data={states}
 					onSelect={(item) => setSelectedState(item)}
 				/>;
+				return;
+			case 'Aadhaar Face Auth (UIDAI FaceRD)':
+				appStackParamList.navigate('AadhaarFaceAuthScreen');
 				return;
 			default:
 				return '';

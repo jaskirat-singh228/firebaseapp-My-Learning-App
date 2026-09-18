@@ -47,14 +47,30 @@ target 'firebaseapp' do
       # :ccache_enabled => true
     )
 
-    # # Fix modular header issues for RNFirebase pods
-    # installer.pods_project.targets.each do |target|
-    #   if target.name.start_with?('RNFB')
-    #     target.build_configurations.each do |build_config|
-    #       build_config.build_settings['DEFINES_MODULE'] = 'NO'
-    #     end
-    #   end
-    # end
+ # 🔧 FIX: Xcode 26.4 + React Native 0.82 (fmt consteval issue)
+    fmt_base = File.join(installer.sandbox.pod_dir('fmt'), 'include', 'fmt', 'base.h')
+ 
+    if File.exist?(fmt_base)
+      Pod::UI.puts "Patching fmt for Xcode 26.4 compatibility...".yellow
+ 
+      content = File.read(fmt_base)
+ 
+      patched = content.gsub(
+        /^#\s*define FMT_USE_CONSTEVAL 1$/,
+        '# define FMT_USE_CONSTEVAL 0'
+      )
+ 
+      if patched != content
+        File.chmod(0644, fmt_base)
+        File.write(fmt_base, patched)
+        Pod::UI.puts "fmt patched successfully ✅".green
+      else
+        Pod::UI.puts "fmt already patched or not needed".blue
+      end
+    else
+      Pod::UI.puts "fmt base.h not found ⚠️".red
+    end
+
   end
 end
 

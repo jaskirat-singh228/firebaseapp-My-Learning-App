@@ -3,6 +3,7 @@ import React from 'react';
 import { AppState, AppStateStatus, NativeEventSubscription } from 'react-native';
 import { useTheme } from 'react-native-paper';
 import { useDispatch, useSelector } from 'react-redux';
+import AadhaarFaceAuthScreen from 'screens/aadhaar_face_auth';
 import AnimationDemoScreen from 'screens/animations/AnimationDemoScreen';
 import AppWelcomeAnimationScreen from 'screens/animations/app_welcome';
 import BottomTabDashBoardScreen from 'screens/bottom_tab_dashboard';
@@ -65,6 +66,7 @@ const AppNavigator: React.FC = () => {
 			<Stack.Screen name={'AnimationDemoScreen'} component={AnimationDemoScreen} />
 			<Stack.Screen name={'ContactScreen'} component={ContactScreen} />
 			<Stack.Screen name={'LocationScreen'} component={LocationScreen} />
+			<Stack.Screen name={'AadhaarFaceAuthScreen'} component={AadhaarFaceAuthScreen} />
 		</Stack.Navigator>
 	);
 };
